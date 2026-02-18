@@ -8,12 +8,5 @@
 			"name": "Per Soderlind",
 			"homepage": "https://soderlind.no"
 		}
-	],
-	"require": {
-		"php": ">=7.4",
-		"composer/installers": "^2.0"
-	},
-	"config": {
-		"preferred-install": "dist"
-	}
+	]
 }

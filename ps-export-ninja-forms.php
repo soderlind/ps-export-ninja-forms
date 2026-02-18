@@ -2,7 +2,7 @@
 /**
  * Plugin Name: PS Export Ninja Forms
  * Description: Export Ninja Forms submissions as CSV with configurable separator.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Per Soderlind
  * License:     GPL-2.0-or-later
  * Requires at least: 6.4
@@ -41,7 +41,7 @@ function ps_enf_admin_menu(): void {
 add_action( 'admin_init', 'ps_enf_handle_export' );
 
 function ps_enf_handle_export(): void {
-	if ( ! isset( $_POST['ps_enf_action'] ) || 'export' !== $_POST['ps_enf_action'] ) {
+	if ( ! isset( $_POST[ 'ps_enf_action' ] ) || 'export' !== $_POST[ 'ps_enf_action' ] ) {
 		return;
 	}
 
@@ -49,7 +49,7 @@ function ps_enf_handle_export(): void {
 		wp_die( esc_html__( 'You do not have permission to export submissions.', 'ps-export-ninja-forms' ) );
 	}
 
-	if ( ! isset( $_POST['ps_enf_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ps_enf_nonce'] ) ), 'ps_enf_export' ) ) {
+	if ( ! isset( $_POST[ 'ps_enf_nonce' ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ 'ps_enf_nonce' ] ) ), 'ps_enf_export' ) ) {
 		wp_die( esc_html__( 'Security check failed.', 'ps-export-ninja-forms' ) );
 	}
 
@@ -57,8 +57,8 @@ function ps_enf_handle_export(): void {
 		wp_die( esc_html__( 'Ninja Forms plugin is not active.', 'ps-export-ninja-forms' ) );
 	}
 
-	$form_id   = absint( $_POST['ps_enf_form_id'] ?? 0 );
-	$separator = sanitize_text_field( wp_unslash( $_POST['ps_enf_separator'] ?? ',' ) );
+	$form_id   = absint( $_POST[ 'ps_enf_form_id' ] ?? 0 );
+	$separator = sanitize_text_field( wp_unslash( $_POST[ 'ps_enf_separator' ] ?? ',' ) );
 
 	if ( ! $form_id ) {
 		wp_die( esc_html__( 'Please select a form.', 'ps-export-ninja-forms' ) );
